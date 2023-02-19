@@ -1,22 +1,34 @@
-﻿/* 
-Задача 19
-Напишите программу, которая принимает на вход пятизначное число и 
-проверяет, является ли оно палиндромом.
-14212 -> нет
-12821 -> да
-23432 -> да
+﻿/* Задача 21
+Напишите программу, которая принимает на вход координаты двух точек и 
+находит расстояние между ними в 3D пространстве.
+A (3,6,8); B (2,1,-7), -> 15.84
+A (7,-5, 0); B (1,-1,9) -> 11.53
  */
 
-Console.WriteLine($"Введите пятизначное число: ");
-string number = Console.ReadLine();
-int length = number.Length;
+point A;
+point B;
+Console.Write($"Ведите координату x точки A: ");
+double.TryParse(Console.ReadLine()!, out A.x);
+Console.Write($"Ведите координату y точки A: ");
+double.TryParse(Console.ReadLine()!, out A.y);
+Console.Write($"Ведите координату z точки A: ");
+double.TryParse(Console.ReadLine()!, out A.z);
+Console.Write($"Ведите координату x точки B: ");
+double.TryParse(Console.ReadLine()!, out B.x);
+Console.Write($"Ведите координату y точки B: ");
+double.TryParse(Console.ReadLine()!, out B.y);
+Console.Write($"Ведите координату z точки B: ");
+double.TryParse(Console.ReadLine()!, out B.z);
 
-if (length == 5)
+double ans = Math.Round(Math.Sqrt(Math.Pow(A.x - B.x, 2) + Math.Pow(A.y - B.y, 2) + + Math.Pow(A.z - B.z, 2)), 2);
+//вычисление раcстояния между А и В:
+Console.Write($"A({A.x}; {A.y}; {A.z}) B({B.x}; {B.y}; {B.z}) -> {ans}");  
+
+struct point
 {
-    if (number[0] == number[4] && number[1] == number[3])
-        Console.WriteLine($"{number} -> да, число - палиндром");
-    else
-        Console.WriteLine($"{number} -> нет, число - не палиндром");
+    public double x;
+
+    public double y;
+
+    public double z;
 }
-else
-    Console.WriteLine($"Число {number} не является пятизначным");
